@@ -73,5 +73,7 @@ O projeto depende de duas tabelas principais:
 
 ---
 
-> **Desenvolvido por:** Anderson Marcolino
+> **Desenvolvido por:** Anderson Marcolino e Lucas Oliveira
 > *Engenheiro de Software focado em democratizar a tecnologia através da automação inteligente.*
+,
+> 
