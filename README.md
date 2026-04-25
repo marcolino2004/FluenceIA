@@ -1,6 +1,6 @@
-# FluenceIA 🚀 | Onboarding Inteligente via WhatsApp
+# FluenceIA 🚀 | Democratizando o Acesso a Idiomas via WhatsApp
 
-O **FluenceIA** é uma solução de automação educacional que utiliza o **n8n** como orquestrador central para transformar o WhatsApp em um tutor de idiomas personalizado. O sistema gerencia desde a captura de dados (onboarding) até a interação dinâmica com o aluno via Inteligência Artificial.
+O **FluenceIA** é uma solução de automação educacional que utiliza o **n8n** como orquestrador central para transformar o WhatsApp em um tutor de idiomas personalizado. O projeto nasceu da necessidade de democratizar o acesso à informação e ao aprendizado de novas línguas, removendo barreiras linguísticas e financeiras para brasileiros que possuem rotinas intensas e pouco tempo para métodos tradicionais de estudo.
 
 ---
 
@@ -9,7 +9,7 @@ O **FluenceIA** é uma solução de automação educacional que utiliza o **n8n*
 Para facilitar a avaliação da banca, você pode interagir diretamente com o fluxo configurado através do botão abaixo:
 
 <div align="center">
-    <a href="https://wa.me/5511965239692?text=Olá!%20Vim%20pelo%20repositório%20do%20n8n%20e%20gostaria%20de%20testar%20o%20LearningFácil." target="_blank">
+    <a href="https://wa.me/5511965239692?text=Olá!%20Vim%20pelo%20repositório%20do%20n8n%20e%20gostaria%20de%20testar%20o%20FluenceIA." target="_blank">
         <img src="https://img.shields.io/badge/TESTAR%20NO%20WHATSAPP-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Link para WhatsApp" height="60">
     </a>
 </div>
@@ -19,55 +19,59 @@ Para facilitar a avaliação da banca, você pode interagir diretamente com o fl
 ## 🛠️ Stack Tecnológica
 
 * **Orquestrador:** [n8n](https://n8n.io/)
-* **Hospedagem:** Oracle
-* **FrontEnd e Nós:** Windsurf e Devin
-* **Interface de Usuário:** WhatsApp Business API
+* **Hospedagem:** Oracle Cloud
+* **Engenharia de Software:** Windsurf & Devin
+* **Interface:** WhatsApp Business API
 * **Banco de Dados:** Supabase (PostgreSQL)
 * **Inteligência Artificial:** OpenAI (Modelo: `gpt-5-mini`)
-* **Framework de IA:** LangChain (com Buffer Window Memory)
+* **Framework de IA:** LangChain (Memória Dinâmica e Agentes)
 
 ---
 
-## 🏗️ Arquitetura do Fluxo
+## 🏗️ Arquitetura do Fluxo e Proposta Pedagógica
 
-O workflow foi desenhado seguindo princípios de **Máquina de Estados (State Machine)**, garantindo que o sistema saiba exatamente em qual etapa do cadastro o usuário se encontra.
+O workflow foi desenhado sob o princípio de **Máquina de Estados (State Machine)** e lógica de **Agentes Adaptativos**, focando em uma experiência de usuário (UX) fluida.
 
-### 1. Triagem e Identificação
-O fluxo inicia com um **WhatsApp Trigger** que captura a mensagem. Através de um nó de código JavaScript, o sistema valida a origem da mensagem e consulta o **Supabase** para verificar se o usuário já possui um registro ativo.
+### 1. Triagem e Validação Inteligente de Dados
+O sistema realiza um onboarding robusto para garantir a qualidade do cadastro e a personalização do ensino:
+* **Validação via Regex:** O e-mail e os dados de contato passam por verificações de integridade para garantir uma comunicação precisa.
+* **Extração de Entidades:** Utiliza JavaScript para limpar e tratar informações de **Nome**, **Idioma de Interesse** e **Nível Atual**, salvando-as de forma estruturada no Supabase.
 
-### 2. Onboarding Automatizado com Tratamento de Dados
-Caso o usuário seja novo, o sistema inicia uma sequência de coleta de dados utilizando lógica de programação para garantir a qualidade da informação:
-* **Nome:** Extração via JavaScript que limpa saudações e capitaliza o nome automaticamente.
-* **E-mail:** Validação robusta utilizando **Regex** para garantir que apenas e-mails sintaticamente corretos sejam salvos.
-* **Idiomas e Nível:** O fluxo identifica mais de 15 idiomas e 3 níveis de proficiência (Básico, Intermediário e Avançado).
+### 2. IA Adaptativa por Níveis (Nivelamento Dinâmico)
+A Inteligência Artificial não é genérica; ela se adapta ao nível de proficiência declarado pelo aluno:
+* **Nível Básico:** Foco em alfabetização e vocabulário inicial, com alta incidência de **traduções para o português** para facilitar a compreensão.
+* **Nível Intermediário:** Um modelo híbrido que mescla explicações gramaticais com prática de conversação.
+* **Nível Avançado:** Foco total em **conversação direta**, simulando situações reais e imersão linguística total.
 
-### 3. Cérebro de IA (Agentic Workflow)
-Após o cadastro, o controle é passado para um **AI Agent** (LangChain):
-* **Memória de Contexto:** Utiliza um `Simple Memory` com janela de 3 mensagens para manter a fluidez da conversa.
-* **Personalização:** O agente identifica se o usuário prefere um método de aprendizado livre ou guiado por perguntas.
+### 3. Memória Dinâmica e Vetores
+Utilizamos princípios de **Memória Dinâmica** para que o bot recorde o progresso do aluno e o contexto das aulas anteriores. A integração com o Supabase permite que cada interação alimente o perfil do usuário, tornando o aprendizado cada vez mais assertivo.
+
+---
+
+## 🌍 Impacto Social e Democracia Digital
+
+O brasileiro médio passa grande parte do dia no WhatsApp. Ao levar o ensino de idiomas para este aplicativo, o **FluenceIA** remove a barreira do "não tenho tempo" e do "não tenho acesso".
+* **Democratização:** Educação de alta qualidade disponível 24h por dia para quem não pode pagar cursos caros.
+* **Acessibilidade:** Interface simples que utiliza uma ferramenta que o brasileiro já domina.
+* **Rotina:** O aprendizado acontece nos intervalos do dia a dia, de forma assíncrona e personalizada.
 
 ---
 
 ## 📊 Estrutura de Dados (Supabase)
 
 O projeto depende de duas tabelas principais:
-* `usuarios`: Armazena dados cadastrais (nome, e-mail, telefone, idioma, nível).
-* `status_usuario`: Controla o estado atual do fluxo para evitar redundância nas perguntas.
+* `usuarios`: Dados cadastrais e preferências de idioma.
+* `status_usuario`: Controle do estado do fluxo e progresso pedagógico.
 
 ---
 
 ## 🚀 Como Executar
 
 1.  **Importação:** Importe o arquivo `fluxo_teste.json` para o seu n8n.
-2.  **Credenciais:** Configure as seguintes conexões:
-    * WhatsApp API
-    * Supabase (URL e Service Role Key)
-    * OpenAI (API Key)
-3.  **Banco de Dados:** Crie as tabelas conforme os campos referenciados no JSON.
+2.  **Credenciais:** Configure as conexões de WhatsApp API, Supabase e OpenAI.
+3.  **Configuração:** Certifique-se de que as tabelas no Supabase seguem os campos referenciados no JSON para o correto funcionamento das chamadas SQL.
 
 ---
 
 > **Desenvolvido por:** Anderson Marcolino
-> *Focado em escalabilidade, infraestrutura cloud e automação inteligente.*
-    * OpenAI (API Key)
-3.  **Banco de Dados:** Crie as tabelas `usuarios` e `status_usuario` no seu projeto Supabase conforme os campos referenciados no JSON.
+> *Engenheiro de Software focado em democratizar a tecnologia através da automação inteligente.*
